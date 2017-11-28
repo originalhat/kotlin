@@ -1,11 +1,8 @@
 class Hamming {
   companion object {
-    fun compute(firstSeqeunce: String, secondSequence: String): Int {
-      if (firstSeqeunce.length != secondSequence.length) {
-        throw IllegalArgumentException("left and right strands must be of equal length.")
-      }
-
-      return firstSeqeunce.zip(secondSequence).filter { it.first != it.second }.count()
+    fun compute(left: String, right: String): Int {
+      require(left.length == right.length) { "left and right strands must be of equal length." }
+      return (left zip right).count { it.first != it.second }
     }
   }
 }
